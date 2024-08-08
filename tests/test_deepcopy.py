@@ -1,4 +1,4 @@
-from sunspot_flux._utils import deepcopy_minimal
+from flux_client._utils import deepcopy_minimal
 
 
 def assert_different_identities(obj1: object, obj2: object) -> None:

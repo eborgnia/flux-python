@@ -8,8 +8,8 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from sunspot_flux._types import Omit, NoneType
-from sunspot_flux._utils import (
+from flux_client._types import Omit, NoneType
+from flux_client._utils import (
     is_dict,
     is_list,
     is_list_type,
@@ -17,8 +17,8 @@ from sunspot_flux._utils import (
     extract_type_arg,
     is_annotated_type,
 )
-from sunspot_flux._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from sunspot_flux._models import BaseModel
+from flux_client._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from flux_client._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
