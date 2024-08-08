@@ -24,7 +24,7 @@ pip install --pre flux-client
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from flux_client import Flux
+from flux_classify import Flux
 
 client = Flux()
 
@@ -40,7 +40,7 @@ Simply import `AsyncFlux` instead of `Flux` and use `await` with each API call:
 
 ```python
 import asyncio
-from flux_client import AsyncFlux
+from flux_classify import AsyncFlux
 
 client = AsyncFlux()
 
@@ -68,16 +68,16 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `flux_client.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `flux_classify.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `flux_client.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `flux_classify.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `flux_client.APIError`.
+All errors inherit from `flux_classify.APIError`.
 
 ```python
-import flux_client
-from flux_client import Flux
+import flux_classify
+from flux_classify import Flux
 
 client = Flux()
 
@@ -86,12 +86,12 @@ try:
         input="string",
         labels=["string", "string", "string"],
     )
-except flux_client.APIConnectionError as e:
+except flux_classify.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except flux_client.RateLimitError as e:
+except flux_classify.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except flux_client.APIStatusError as e:
+except flux_classify.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -119,7 +119,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from flux_client import Flux
+from flux_classify import Flux
 
 # Configure the default for all requests:
 client = Flux(
@@ -140,7 +140,7 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from flux_client import Flux
+from flux_classify import Flux
 
 # Configure the default for all requests:
 client = Flux(
@@ -193,7 +193,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from flux_client import Flux
+from flux_classify import Flux
 
 client = Flux()
 response = client.with_raw_response.classify(
@@ -206,9 +206,9 @@ top_level = response.parse()  # get the object that `classify()` would have retu
 print(top_level)
 ```
 
-These methods return an [`APIResponse`](https://github.com/squack-io/flux-python/tree/main/src/flux_client/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/squack-io/flux-python/tree/main/src/flux_classify/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/squack-io/flux-python/tree/main/src/flux_client/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/squack-io/flux-python/tree/main/src/flux_classify/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -273,7 +273,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality
 
 ```python
-from flux_client import Flux, DefaultHttpxClient
+from flux_classify import Flux, DefaultHttpxClient
 
 client = Flux(
     # Or use the `FLUX_BASE_URL` env var

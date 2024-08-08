@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from flux_client._utils import required_args
+from flux_classify._utils import required_args
 
 
 def test_too_many_positional_params() -> None:
