@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from flux_classify._utils import PropertyInfo
-from flux_classify._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from flux_classify._models import BaseModel, construct_type
+from flux_client._utils import PropertyInfo
+from flux_client._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from flux_client._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
