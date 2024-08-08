@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from flux_classify import Flux, AsyncFlux
-from flux_classify._streaming import Stream, AsyncStream, ServerSentEvent
+from flux_client import Flux, AsyncFlux
+from flux_client._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio
