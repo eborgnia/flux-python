@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from flux_client._types import FileTypes
-from flux_client._utils import extract_files
+from flux_classify._types import FileTypes
+from flux_classify._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:
