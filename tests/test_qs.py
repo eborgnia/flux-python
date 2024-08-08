@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from flux_client._qs import Querystring, stringify
+from flux_classify._qs import Querystring, stringify
 
 
 def test_empty() -> None:
