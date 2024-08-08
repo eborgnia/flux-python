@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from sunspot_flux._types import FileTypes
-from sunspot_flux._utils import extract_files
+from flux_client._types import FileTypes
+from flux_client._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

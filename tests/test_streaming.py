@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from sunspot_flux import Flux, AsyncFlux
-from sunspot_flux._streaming import Stream, AsyncStream, ServerSentEvent
+from flux_client import Flux, AsyncFlux
+from flux_client._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio
