@@ -1,6 +1,6 @@
 # Flux Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/sunspot-flux.svg)](https://pypi.org/project/sunspot-flux/)
+[![PyPI version](https://img.shields.io/pypi/v/flux-client.svg)](https://pypi.org/project/flux-client/)
 
 The Flux Python library provides convenient access to the Flux REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.flux.com](https://docs.flux.com
 
 ```sh
 # install from PyPI
-pip install --pre sunspot-flux
+pip install --pre flux-client
 ```
 
 ## Usage
