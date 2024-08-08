@@ -92,7 +92,7 @@ class Flux(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("FLUX_BASE_URL")
         if base_url is None:
-            base_url = f"https://localhost:8080/test-api"
+            base_url = f"https://api.itsflux.com"
 
         super().__init__(
             version=__version__,
@@ -278,7 +278,7 @@ class AsyncFlux(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("FLUX_BASE_URL")
         if base_url is None:
-            base_url = f"https://localhost:8080/test-api"
+            base_url = f"https://api.itsflux.com"
 
         super().__init__(
             version=__version__,
