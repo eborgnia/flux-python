@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from flux_classify import Flux, AsyncFlux
+from flux_client import Flux, AsyncFlux
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("flux_classify").setLevel(logging.DEBUG)
+logging.getLogger("flux_client").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")

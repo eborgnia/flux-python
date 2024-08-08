@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from flux_classify._types import Base64FileInput
-from flux_classify._utils import (
+from flux_client._types import Base64FileInput
+from flux_client._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from flux_classify._compat import PYDANTIC_V2
-from flux_classify._models import BaseModel
+from flux_client._compat import PYDANTIC_V2
+from flux_client._models import BaseModel
 
 _T = TypeVar("_T")
 
