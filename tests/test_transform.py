@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from flux._types import Base64FileInput
-from flux._utils import (
+from sunspot_flux._types import Base64FileInput
+from sunspot_flux._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from flux._compat import PYDANTIC_V2
-from flux._models import BaseModel
+from sunspot_flux._compat import PYDANTIC_V2
+from sunspot_flux._models import BaseModel
 
 _T = TypeVar("_T")
 

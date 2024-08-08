@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from flux import Flux, AsyncFlux
+from sunspot_flux import Flux, AsyncFlux
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("flux").setLevel(logging.DEBUG)
+logging.getLogger("sunspot_flux").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")

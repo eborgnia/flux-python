@@ -1,5 +1,5 @@
 [project]
-name = "flux"
+name = "sunspot-flux"
 version = "0.0.1-alpha.0"
 description = "The official Python library for the flux API"
 dynamic = ["readme"]
@@ -85,7 +85,7 @@ typecheck = { chain = [
   "typecheck:mypy"
 ]}
 "typecheck:pyright" = "pyright"
-"typecheck:verify-types" = "pyright --verifytypes flux --ignoreexternal"
+"typecheck:verify-types" = "pyright --verifytypes sunspot_flux --ignoreexternal"
 "typecheck:mypy" = "mypy ."
 
 [build-system]
@@ -98,7 +98,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/flux"]
+packages = ["src/sunspot_flux"]
 
 [tool.hatch.build.targets.sdist]
 # Basically everything except hidden files/directories (such as .github, .devcontainers, .python-version, etc)
@@ -204,7 +204,7 @@ length-sort = true
 length-sort-straight = true
 combine-as-imports = true
 extra-standard-library = ["typing_extensions"]
-known-first-party = ["flux", "tests"]
+known-first-party = ["sunspot_flux", "tests"]
 
 [tool.ruff.lint.per-file-ignores]
 "bin/**.py" = ["T201", "T203"]
