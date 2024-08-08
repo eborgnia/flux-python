@@ -16,11 +16,16 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from flux import Flux, AsyncFlux, APIResponseValidationError
-from flux._models import BaseModel, FinalRequestOptions
-from flux._constants import RAW_RESPONSE_HEADER
-from flux._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
-from flux._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from sunspot_flux import Flux, AsyncFlux, APIResponseValidationError
+from sunspot_flux._models import BaseModel, FinalRequestOptions
+from sunspot_flux._constants import RAW_RESPONSE_HEADER
+from sunspot_flux._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from sunspot_flux._base_client import (
+    DEFAULT_TIMEOUT,
+    HTTPX_DEFAULT_TIMEOUT,
+    BaseClient,
+    make_request_options,
+)
 
 from .utils import update_env
 
@@ -210,10 +215,10 @@ class TestFlux:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "flux/_legacy_response.py",
-                        "flux/_response.py",
+                        "sunspot_flux/_legacy_response.py",
+                        "sunspot_flux/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "flux/_compat.py",
+                        "sunspot_flux/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -657,7 +662,7 @@ class TestFlux:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("sunspot_flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/classify").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -672,7 +677,7 @@ class TestFlux:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("sunspot_flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/classify").mock(return_value=httpx.Response(500))
@@ -688,7 +693,7 @@ class TestFlux:
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("sunspot_flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retries_taken(self, client: Flux, failures_before_success: int, respx_mock: MockRouter) -> None:
         client = client.with_options(max_retries=4)
@@ -876,10 +881,10 @@ class TestAsyncFlux:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "flux/_legacy_response.py",
-                        "flux/_response.py",
+                        "sunspot_flux/_legacy_response.py",
+                        "sunspot_flux/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "flux/_compat.py",
+                        "sunspot_flux/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -1327,7 +1332,7 @@ class TestAsyncFlux:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("sunspot_flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/classify").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1342,7 +1347,7 @@ class TestAsyncFlux:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("sunspot_flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/classify").mock(return_value=httpx.Response(500))
@@ -1358,7 +1363,7 @@ class TestAsyncFlux:
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("sunspot_flux._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_retries_taken(

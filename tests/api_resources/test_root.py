@@ -7,8 +7,8 @@ from typing import Any, cast
 
 import pytest
 
-from flux import Flux, AsyncFlux
 from tests.utils import assert_matches_type
+from sunspot_flux import Flux, AsyncFlux
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

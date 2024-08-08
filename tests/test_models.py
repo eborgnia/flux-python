@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from flux._utils import PropertyInfo
-from flux._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from flux._models import BaseModel, construct_type
+from sunspot_flux._utils import PropertyInfo
+from sunspot_flux._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from sunspot_flux._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
