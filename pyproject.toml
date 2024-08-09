@@ -1,5 +1,5 @@
 [project]
-name = "flux-classify"
+name = "flux-client"
 version = "0.1.0-alpha.6"
 description = "The official Python library for the flux API"
 dynamic = ["readme"]
