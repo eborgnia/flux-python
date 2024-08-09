@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 (2024-08-09)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/squack-io/flux-python/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** my cool feature ([#28](https://github.com/squack-io/flux-python/issues/28)) ([d2deb2e](https://github.com/squack-io/flux-python/commit/d2deb2ee973e97e838bced30983752d33dab5394))
+
 ## 1.0.0 (2024-08-09)
 
 Full Changelog: [v0.1.0-alpha.6...v1.0.0](https://github.com/squack-io/flux-python/compare/v0.1.0-alpha.6...v1.0.0)
