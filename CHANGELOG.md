@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0 (2024-08-09)
+
+Full Changelog: [v0.1.0-alpha.6...v1.0.0](https://github.com/squack-io/flux-python/compare/v0.1.0-alpha.6...v1.0.0)
+
+### Chores
+
+* update SDK settings ([#25](https://github.com/squack-io/flux-python/issues/25)) ([fde154b](https://github.com/squack-io/flux-python/commit/fde154b29586766163eb64eb4daa110487dd0e7a))
+
 ## 0.1.0-alpha.6 (2024-08-09)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/squack-io/flux-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
