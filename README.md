@@ -16,7 +16,7 @@ The REST API documentation can be found on [itsflux.com](https://itsflux.com/doc
 
 ```sh
 # install from PyPI
-pip install --pre flux-client
+pip install flux-client
 ```
 
 ## Usage
