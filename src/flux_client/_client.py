@@ -60,7 +60,6 @@ __all__ = [
 
 
 class Flux(SyncAPIClient):
-    root: resources.RootResource
     with_raw_response: FluxWithRawResponse
     with_streaming_response: FluxWithStreamedResponse
 
@@ -105,7 +104,6 @@ class Flux(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.root = resources.RootResource(self)
         self.with_raw_response = FluxWithRawResponse(self)
         self.with_streaming_response = FluxWithStreamedResponse(self)
 
@@ -246,7 +244,6 @@ class Flux(SyncAPIClient):
 
 
 class AsyncFlux(AsyncAPIClient):
-    root: resources.AsyncRootResource
     with_raw_response: AsyncFluxWithRawResponse
     with_streaming_response: AsyncFluxWithStreamedResponse
 
@@ -291,7 +288,6 @@ class AsyncFlux(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.root = resources.AsyncRootResource(self)
         self.with_raw_response = AsyncFluxWithRawResponse(self)
         self.with_streaming_response = AsyncFluxWithStreamedResponse(self)
 
@@ -433,8 +429,6 @@ class AsyncFlux(AsyncAPIClient):
 
 class FluxWithRawResponse:
     def __init__(self, client: Flux) -> None:
-        self.root = resources.RootResourceWithRawResponse(client.root)
-
         self.classify = to_raw_response_wrapper(
             client.classify,
         )
@@ -442,8 +436,6 @@ class FluxWithRawResponse:
 
 class AsyncFluxWithRawResponse:
     def __init__(self, client: AsyncFlux) -> None:
-        self.root = resources.AsyncRootResourceWithRawResponse(client.root)
-
         self.classify = async_to_raw_response_wrapper(
             client.classify,
         )
@@ -451,8 +443,6 @@ class AsyncFluxWithRawResponse:
 
 class FluxWithStreamedResponse:
     def __init__(self, client: Flux) -> None:
-        self.root = resources.RootResourceWithStreamingResponse(client.root)
-
         self.classify = to_streamed_response_wrapper(
             client.classify,
         )
@@ -460,8 +450,6 @@ class FluxWithStreamedResponse:
 
 class AsyncFluxWithStreamedResponse:
     def __init__(self, client: AsyncFlux) -> None:
-        self.root = resources.AsyncRootResourceWithStreamingResponse(client.root)
-
         self.classify = async_to_streamed_response_wrapper(
             client.classify,
         )
