@@ -1,11 +1,11 @@
 [project]
 name = "flux-classify"
-version = "0.1.0-alpha.5"
+version = "0.1.0-alpha.6"
 description = "The official Python library for the flux API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Flux", email = "dev-feedback@flux.com" },
+{ name = "Flux", email = "eborgnia@squack.io" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
