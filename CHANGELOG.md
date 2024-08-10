@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0 (2024-08-10)
+
+Full Changelog: [v1.1.0...v1.2.0](https://github.com/squack-io/flux-python/compare/v1.1.0...v1.2.0)
+
+### Features
+
+* **api:** update OpenAPI spec ([#34](https://github.com/squack-io/flux-python/issues/34)) ([a5e92d5](https://github.com/squack-io/flux-python/commit/a5e92d5794b4df84b2fcc3e5f56e81ad3932f490))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#31](https://github.com/squack-io/flux-python/issues/31)) ([a9e3da2](https://github.com/squack-io/flux-python/commit/a9e3da278dc2074f0bf639d4dc7e94c3fe0052f4))
+* **internal:** ensure package is importable in lint cmd ([#33](https://github.com/squack-io/flux-python/issues/33)) ([a920252](https://github.com/squack-io/flux-python/commit/a920252601c7947609f44bb025e14fe253d26b01))
+
 ## 1.1.0 (2024-08-09)
 
 Full Changelog: [v1.0.0...v1.1.0](https://github.com/squack-io/flux-python/compare/v1.0.0...v1.1.0)

@@ -51,6 +51,31 @@ class TestTopLevel:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_dummy(self, client: Flux) -> None:
+        top_level = client.dummy()
+        assert_matches_type(object, top_level, path=["response"])
+
+    @parametrize
+    def test_raw_response_dummy(self, client: Flux) -> None:
+        response = client.with_raw_response.dummy()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        top_level = response.parse()
+        assert_matches_type(object, top_level, path=["response"])
+
+    @parametrize
+    def test_streaming_response_dummy(self, client: Flux) -> None:
+        with client.with_streaming_response.dummy() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            top_level = response.parse()
+            assert_matches_type(object, top_level, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncTopLevel:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -86,5 +111,30 @@ class TestAsyncTopLevel:
 
             top_level = await response.parse()
             assert_matches_type(ClassifyResponse, top_level, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_dummy(self, async_client: AsyncFlux) -> None:
+        top_level = await async_client.dummy()
+        assert_matches_type(object, top_level, path=["response"])
+
+    @parametrize
+    async def test_raw_response_dummy(self, async_client: AsyncFlux) -> None:
+        response = await async_client.with_raw_response.dummy()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        top_level = await response.parse()
+        assert_matches_type(object, top_level, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_dummy(self, async_client: AsyncFlux) -> None:
+        async with async_client.with_streaming_response.dummy() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            top_level = await response.parse()
+            assert_matches_type(object, top_level, path=["response"])
 
         assert cast(Any, response.is_closed) is True
